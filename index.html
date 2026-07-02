@@ -1,0 +1,615 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SM Design de Interiores</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rose: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                        },
+                        rosegold: {
+                            light: '#fbf5f5',
+                            accent: '#e2b4b4',
+                            DEFAULT: '#b76e79',
+                            dark: '#8a4f58',
+                            deep: '#4a282d'
+                        },
+                        sand: {
+                            50: '#fcfbf7',
+                            100: '#f3ece3',
+                            900: '#2c2520'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fbf5f5;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom smooth hover transitions */
+        .hover-gold {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hover-gold:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(183, 110, 121, 0.3);
+        }
+    </style>
+</head>
+<body class="text-sand-900 antialiased overflow-x-hidden">
+
+    <!-- Header / Navbar -->
+    <header class="fixed w-full top-0 z-50 bg-rosegold-light/90 backdrop-blur-md border-b border-rosegold-accent/20">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex flex-col">
+                <span class="font-serif text-2xl font-bold tracking-widest text-rosegold-deep">SM</span>
+                <span class="text-[9px] uppercase tracking-[0.25em] text-rosegold font-semibold -mt-1">Design de Interiores</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
+                <a href="#sobre" class="text-rosegold-deep hover:text-rosegold transition-colors">Sobre Nós</a>
+                <a href="#servicos" class="text-rosegold-deep hover:text-rosegold transition-colors">Serviços</a>
+                <a href="#projetos" class="text-rosegold-deep hover:text-rosegold transition-colors">Conceitos</a>
+                <a href="#simulador" class="text-rosegold-deep hover:text-rosegold transition-colors">Planeje seu Espaço</a>
+                <a href="#contato" class="text-rosegold-deep hover:text-rosegold transition-colors">Contato</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <a href="https://api.whatsapp.com/send?phone=5511980353252&text=Olá!%20Visitei%20o%20seu%20site%20e%20gostaria%20de%20fazer%20um%20orçamento." 
+               target="_blank" 
+               class="hidden sm:inline-flex items-center px-5 py-2.5 bg-rosegold hover:bg-rosegold-dark text-white text-xs font-semibold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md shadow-rosegold/20">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.665.989 3.3 1.472 5.358 1.473 5.398 0 9.795-4.397 9.799-9.797.002-2.592-1.002-5.029-2.827-6.857C17.094 2.148 14.65 1.14 12.004 1.14 6.608 1.14 2.213 5.537 2.21 10.938c-.001 2.112.556 4.177 1.614 5.992l-.994 3.63 3.817-.966z"/>
+                </svg>
+                Fale Comigo
+            </a>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-rosegold-deep focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-rosegold-light border-b border-rosegold-accent/20 px-6 py-4 space-y-3 transition-all duration-300">
+            <a href="#sobre" onclick="toggleMobileMenu()" class="block text-rosegold-deep hover:text-rosegold py-1 font-medium">Sobre Nós</a>
+            <a href="#servicos" onclick="toggleMobileMenu()" class="block text-rosegold-deep hover:text-rosegold py-1 font-medium">Serviços</a>
+            <a href="#projetos" onclick="toggleMobileMenu()" class="block text-rosegold-deep hover:text-rosegold py-1 font-medium">Conceitos</a>
+            <a href="#simulador" onclick="toggleMobileMenu()" class="block text-rosegold-deep hover:text-rosegold py-1 font-medium">Planeje seu Espaço</a>
+            <a href="#contato" onclick="toggleMobileMenu()" class="block text-rosegold-deep hover:text-rosegold py-1 font-medium">Contato</a>
+            <a href="https://api.whatsapp.com/send?phone=5511980353252&text=Olá!%20Visitei%20o%20seu%20site%20e%20gostaria%20de%20fazer%20um%20orçamento." 
+               target="_blank" 
+               class="w-full text-center inline-flex justify-center items-center px-5 py-2.5 bg-rosegold hover:bg-rosegold-dark text-white text-xs font-semibold uppercase tracking-wider rounded-full transition-all duration-300">
+                Conversar pelo WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:py-40 flex items-center overflow-hidden">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-rosegold-accent/10 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 -left-40 w-80 h-80 bg-rosegold/5 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <!-- Text Content -->
+            <div class="space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-rosegold-accent/20 border border-rosegold-accent/30 rounded-full px-4 py-1.5 text-xs text-rosegold-dark font-semibold tracking-wider uppercase">
+                    <span>✨ Sofisticação & Funcionalidade</span>
+                </div>
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-rosegold-deep leading-tight font-bold">
+                    Transformando espaços em <span class="italic text-rosegold">histórias</span> de bem-viver.
+                </h1>
+                <p class="text-gray-600 text-base sm:text-lg max-w-xl leading-relaxed">
+                    Na <strong class="text-rosegold-deep">SM Design de Interiores</strong>, projetamos ambientes personalizados sob medida para o seu estilo de vida, aliando sofisticação, conforto e estética premium.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="#simulador" class="px-8 py-4 bg-rosegold hover:bg-rosegold-dark text-white text-sm font-semibold tracking-wider uppercase rounded-full shadow-lg shadow-rosegold/20 text-center transition-all duration-300 transform hover:-translate-y-0.5">
+                        Simular meu Ambiente
+                    </a>
+                    <a href="#projetos" class="px-8 py-4 border border-rosegold text-rosegold hover:bg-rosegold/5 text-sm font-semibold tracking-wider uppercase rounded-full text-center transition-all duration-300">
+                        Ver Conceitos
+                    </a>
+                </div>
+            </div>
+
+            <!-- Conceptual Visual Graphic (Premium minimalist wireframe) -->
+            <div class="relative flex justify-center items-center">
+                <!-- Golden Frame Graphic Mockup -->
+                <div class="w-full max-w-md aspect-square bg-white rounded-3xl p-8 border border-rosegold-accent/30 shadow-2xl shadow-rosegold-accent/10 relative flex flex-col justify-between">
+                    <div class="absolute top-4 right-4 text-rosegold-accent opacity-30 font-serif text-8xl pointer-events-none">SM</div>
+                    <!-- Blueprint/Minimalist SVG Mockup representing an elegant interior living room line art -->
+                    <div class="w-full h-2/3 flex items-center justify-center">
+                        <svg class="w-full h-full text-rosegold-accent" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Floor / Base Lines -->
+                            <line x1="20" y1="170" x2="180" y2="170" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="20" y1="175" x2="180" y2="175" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 2"/>
+                            
+                            <!-- Minimalist Sofa Line-Art -->
+                            <path d="M 40 140 H 160 V 160 H 40 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                            <path d="M 45 125 H 155 V 140 H 45 Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                            <path d="M 40 120 V 160" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M 160 120 V 160" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="70" cy="132" r="6" stroke="currentColor" stroke-width="1"/>
+                            <circle cx="130" cy="132" r="6" stroke="currentColor" stroke-width="1"/>
+
+                            <!-- Minimalist Lamp / Light Line-Art -->
+                            <path d="M 140 170 V 70 H 125" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                            <path d="M 115 75 L 125 65 L 135 75 Z" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+                            <line x1="125" y1="75" x2="125" y2="90" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+                            <circle cx="125" cy="93" r="2.5" fill="currentColor"/>
+
+                            <!-- Hanging Frame on Wall -->
+                            <rect x="55" y="45" width="45" height="55" rx="2" stroke="currentColor" stroke-width="1.2"/>
+                            <!-- Abstract mountain shape inside frame -->
+                            <path d="M 60 90 L 75 70 L 85 85 L 92 78 L 96 90" stroke="currentColor" stroke-width="0.8"/>
+                            <circle cx="85" cy="58" r="4" stroke="currentColor" stroke-width="0.8"/>
+                        </svg>
+                    </div>
+                    <!-- Caption of our Concept -->
+                    <div class="border-t border-rosegold-accent/20 pt-4 mt-4">
+                        <span class="text-[10px] uppercase tracking-widest text-rosegold font-bold">Estudo Volumétrico</span>
+                        <h4 class="font-serif text-lg text-rosegold-deep font-semibold">Living Contemporâneo</h4>
+                        <p class="text-xs text-gray-500">Linhas fluidas, tons pastéis e sofisticação simétrica.</p>
+                    </div>
+                </div>
+                <!-- Mini Floating Badges -->
+                <div class="absolute -bottom-4 -left-4 bg-rosegold-deep text-white py-3 px-5 rounded-2xl shadow-xl flex items-center space-x-3">
+                    <span class="text-2xl">🛋️</span>
+                    <div>
+                        <p class="text-[10px] uppercase text-rosegold-accent tracking-widest font-semibold">Projetos autorais</p>
+                        <p class="text-xs font-bold font-serif">Arquiteta de Sonhos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Sobre Nós / A Designer -->
+    <section id="sobre" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left: Aesthetic Layout Representation (No physical photo, just branding) -->
+                <div class="relative p-6">
+                    <div class="absolute inset-0 bg-rosegold-accent/10 rounded-[2.5rem] transform rotate-3"></div>
+                    <div class="relative bg-rosegold-light border border-rosegold-accent/30 rounded-[2.5rem] p-10 shadow-xl space-y-6">
+                        <div class="w-16 h-16 rounded-full bg-rosegold-accent/20 flex items-center justify-center text-rosegold text-2xl">
+                            🏡
+                        </div>
+                        <h3 class="font-serif text-2xl text-rosegold-deep font-semibold">SM Design de Interiores</h3>
+                        <blockquote class="text-gray-600 italic border-l-4 border-rosegold pl-4 py-2">
+                            "Acredito que nossa casa é nosso santuário mais sagrado. Meu papel é entender a sua essência e traduzi-la em design de excelência."
+                        </blockquote>
+                        <div class="pt-4 space-y-2 text-sm text-gray-500">
+                            <p class="flex items-center"><strong class="text-rosegold-deep w-24">Fundadora:</strong> SM Design</p>
+                            <p class="flex items-center"><strong class="text-rosegold-deep w-24">Missão:</strong> Unir conforto, identidade e sofisticação.</p>
+                            <p class="flex items-center"><strong class="text-rosegold-deep w-24">Valores:</strong> Honestidade, exclusividade e elegância.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: About Text -->
+                <div class="space-y-6">
+                    <span class="text-xs font-bold text-rosegold tracking-widest uppercase">Sobre a Fundadora & Estúdio</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl text-rosegold-deep font-bold">Criando espaços com identidade e alma</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Seja bem-vinda ao estúdio <strong>SM Design de Interiores</strong>. Aqui, nós entendemos que cada projeto é único. Não seguimos apenas tendências passageiras, mas criamos um design que respeita as suas necessidades diárias, aproveitando cada centímetro com beleza e propósito.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Nossos projetos são focados na harmonização de cores, materiais nobres, ergonomia e iluminação inteligente. Atuamos desde a assessoria de decoração online até o planejamento executivo completo de residências e escritórios.
+                    </p>
+                    <div class="pt-4">
+                        <a href="https://api.whatsapp.com/send?phone=5511980353252&text=Olá!%20Gostaria%20de%20conversar%20sobre%20meu%20projeto." target="_blank" class="inline-flex items-center space-x-2 text-rosegold hover:text-rosegold-dark font-semibold tracking-wider uppercase text-xs">
+                            <span>Agende uma conversa inicial sem compromisso</span>
+                            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Serviços -->
+    <section id="servicos" class="py-20 bg-rosegold-light">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <span class="text-xs font-bold text-rosegold tracking-widest uppercase">O que oferecemos</span>
+            <h2 class="font-serif text-3xl sm:text-4xl text-rosegold-deep font-bold mt-2 mb-12">Soluções completas para o seu lar</h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Serviço 1 -->
+                <div class="bg-white p-8 rounded-3xl border border-rosegold-accent/10 hover-gold">
+                    <div class="w-12 h-12 bg-rosegold-accent/20 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">✏️</div>
+                    <h3 class="font-serif text-xl font-semibold text-rosegold-deep mb-3">Projeto Executivo 3D</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Layouts detalhados com especificações técnicas completas, detalhamento de marcenaria, elétrica, paginação de pisos e revestimentos.
+                    </p>
+                </div>
+
+                <!-- Serviço 2 -->
+                <div class="bg-white p-8 rounded-3xl border border-rosegold-accent/10 hover-gold">
+                    <div class="w-12 h-12 bg-rosegold-accent/20 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">💡</div>
+                    <h3 class="font-serif text-xl font-semibold text-rosegold-deep mb-3">Projeto de Iluminação</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Criamos cenários luminotécnicos que valorizam a arquitetura, gerando aconchego, funcionalidade e destacando os detalhes nobres de cada ambiente.
+                    </p>
+                </div>
+
+                <!-- Serviço 3 -->
+                <div class="bg-white p-8 rounded-3xl border border-rosegold-accent/10 hover-gold">
+                    <div class="w-12 h-12 bg-rosegold-accent/20 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">☕</div>
+                    <h3 class="font-serif text-xl font-semibold text-rosegold-deep mb-3">Consultoria de Interiores</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Ideal para quem busca renovar ambientes de forma rápida, com orientações precisas sobre cores, disposição de móveis, adornos e tecidos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Projetos (No Photos, architectural concept representations) -->
+    <section id="projetos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-xl mx-auto mb-16">
+                <span class="text-xs font-bold text-rosegold tracking-widest uppercase">Estudos & Layouts</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-rosegold-deep font-bold mt-2">Nossos Conceitos de Projetos</h2>
+                <p class="text-gray-500 text-sm mt-3">
+                    Apresentamos alguns dos layouts planejados pelo nosso estúdio. Usamos esboços minimalistas para demonstrar o equilíbrio e inteligência de espaço.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project Card 1: Cozinha Integrada -->
+                <div class="bg-rosegold-light/50 border border-rosegold-accent/20 rounded-3xl overflow-hidden p-6 hover-gold">
+                    <div class="h-48 flex items-center justify-center text-rosegold-accent bg-white rounded-2xl p-4 border border-rosegold-accent/10">
+                        <svg class="w-32 h-32" viewBox="0 0 100 100" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Kitchen counter outline -->
+                            <rect x="15" y="60" width="70" height="25" rx="2" stroke-width="1.2"/>
+                            <!-- Island -->
+                            <rect x="25" y="30" width="50" height="15" rx="1" stroke-width="1.2" stroke-dasharray="2 2"/>
+                            <!-- Overhead lights -->
+                            <line x1="35" y1="10" x2="35" y2="22" stroke-width="0.8"/>
+                            <line x1="50" y1="10" x2="50" y2="22" stroke-width="0.8"/>
+                            <line x1="65" y1="10" x2="65" y2="22" stroke-width="0.8"/>
+                            <circle cx="35" cy="24" r="2.5" fill="currentColor"/>
+                            <circle cx="50" cy="24" r="2.5" fill="currentColor"/>
+                            <circle cx="65" cy="24" r="2.5" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="mt-6">
+                        <span class="text-[10px] uppercase font-bold text-rosegold tracking-wider">Cozinha Americana Gourmet</span>
+                        <h3 class="font-serif text-lg font-semibold text-rosegold-deep mt-1">Conceito de Integração</h3>
+                        <p class="text-xs text-gray-500 mt-2">Otimização máxima de espaço, com bancada central e iluminação direcionada para recepção de convidados.</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: Suíte Master -->
+                <div class="bg-rosegold-light/50 border border-rosegold-accent/20 rounded-3xl overflow-hidden p-6 hover-gold">
+                    <div class="h-48 flex items-center justify-center text-rosegold-accent bg-white rounded-2xl p-4 border border-rosegold-accent/10">
+                        <svg class="w-32 h-32" viewBox="0 0 100 100" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Bed layout outline -->
+                            <rect x="25" y="35" width="50" height="45" rx="2" stroke-width="1.2"/>
+                            <!-- Pillows -->
+                            <rect x="30" y="40" width="16" height="10" rx="1" stroke-width="1"/>
+                            <rect x="54" y="40" width="16" height="10" rx="1" stroke-width="1"/>
+                            <!-- Headboard -->
+                            <line x1="20" y1="35" x2="80" y2="35" stroke-width="2"/>
+                            <!-- Bedside tables -->
+                            <rect x="15" y="40" width="10" height="12" rx="1" stroke-width="1"/>
+                            <rect x="75" y="40" width="10" height="12" rx="1" stroke-width="1"/>
+                        </svg>
+                    </div>
+                    <div class="mt-6">
+                        <span class="text-[10px] uppercase font-bold text-rosegold tracking-wider">Suíte Principal</span>
+                        <h3 class="font-serif text-lg font-semibold text-rosegold-deep mt-1">Sinfonia de Conforto</h3>
+                        <p class="text-xs text-gray-500 mt-2">Uso de texturas orgânicas e painel de marcenaria iluminado na cabeceira, gerando atmosfera relaxante.</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 3: Varanda Integrada -->
+                <div class="bg-rosegold-light/50 border border-rosegold-accent/20 rounded-3xl overflow-hidden p-6 hover-gold">
+                    <div class="h-48 flex items-center justify-center text-rosegold-accent bg-white rounded-2xl p-4 border border-rosegold-accent/10">
+                        <svg class="w-32 h-32" viewBox="0 0 100 100" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Armchair outline -->
+                            <rect x="30" y="45" width="40" height="35" rx="4" stroke-width="1.2"/>
+                            <!-- Plant decoration -->
+                            <path d="M 50 45 Q 50 15 42 20 Q 50 25 50 45" stroke-width="1" fill="none"/>
+                            <path d="M 50 45 Q 50 15 58 20 Q 50 25 50 45" stroke-width="1" fill="none"/>
+                            <!-- Flower pot -->
+                            <polygon points="45,45 55,45 53,58 47,58" stroke-width="1"/>
+                        </svg>
+                    </div>
+                    <div class="mt-6">
+                        <span class="text-[10px] uppercase font-bold text-rosegold tracking-wider">Varanda & Garden</span>
+                        <h3 class="font-serif text-lg font-semibold text-rosegold-deep mt-1">Ambiente Biofílico</h3>
+                        <p class="text-xs text-gray-500 mt-2">Varanda integrada com elementos naturais, jardins verticais e poltronas confortáveis para leitura.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Section: Project Planner / Simulator -->
+    <section id="simulador" class="py-20 bg-rosegold-light">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-white rounded-3xl border border-rosegold-accent/30 p-8 md:p-12 shadow-xl relative overflow-hidden">
+                <div class="absolute -top-12 -right-12 w-48 h-48 bg-rosegold-accent/10 rounded-full blur-2xl"></div>
+
+                <div class="text-center max-w-xl mx-auto mb-8 relative z-10">
+                    <span class="text-xs font-bold text-rosegold tracking-widest uppercase">Simulador de Projeto</span>
+                    <h2 class="font-serif text-3xl text-rosegold-deep font-bold mt-2">Desenhe seu Espaço dos Sonhos</h2>
+                    <p class="text-xs text-gray-500 mt-2">Selecione as opções do seu ambiente ideal e receba uma assessoria guiada por WhatsApp!</p>
+                </div>
+
+                <!-- Simulation Form -->
+                <form id="simulationForm" class="space-y-6 relative z-10" onsubmit="sendBriefing(event)">
+                    <!-- Step 1: Tipo de Ambiente -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-rosegold-deep tracking-wider mb-3">1. Qual ambiente deseja transformar?</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="room" value="Sala de Estar" class="peer hidden" checked>
+                                <div class="p-4 border border-rosegold-accent/30 rounded-xl text-center text-sm font-medium hover:border-rosegold peer-checked:bg-rosegold peer-checked:text-white transition-all">
+                                    🛋️ Sala
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="room" value="Quarto / Suíte" class="peer hidden">
+                                <div class="p-4 border border-rosegold-accent/30 rounded-xl text-center text-sm font-medium hover:border-rosegold peer-checked:bg-rosegold peer-checked:text-white transition-all">
+                                    🛏️ Quarto
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="room" value="Cozinha / Gourmet" class="peer hidden">
+                                <div class="p-4 border border-rosegold-accent/30 rounded-xl text-center text-sm font-medium hover:border-rosegold peer-checked:bg-rosegold peer-checked:text-white transition-all">
+                                    🍳 Cozinha
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="room" value="Comercial / Escritório" class="peer hidden">
+                                <div class="p-4 border border-rosegold-accent/30 rounded-xl text-center text-sm font-medium hover:border-rosegold peer-checked:bg-rosegold peer-checked:text-white transition-all">
+                                    💼 Escritório
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Estilo de Design -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-rosegold-deep tracking-wider mb-3">2. Qual o estilo estético de sua preferência?</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="style" value="Minimalista e Moderno" class="peer hidden" checked>
+                                <div class="p-4 border border-rosegold-accent/30 rounded-xl text-center text-sm font-medium hover:border-rosegold peer-checked:bg-rosegold peer-checked:text-white transition-all">
+                                    Moderno
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="style" value="Clássico e Sofisticado" class="peer hidden">
+                                <div class="p-4 border border-rosegold-accent/30 rounded-xl text-center text-sm font-medium hover:border-rosegold peer-checked:bg-rosegold peer-checked:text-white transition-all">
+                                    Clássico
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="style" value="Industrial e Urbano" class="peer hidden">
+                                <div class="p-4 border border-rosegold-accent/30 rounded-xl text-center text-sm font-medium hover:border-rosegold peer-checked:bg-rosegold peer-checked:text-white transition-all">
+                                    Industrial
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="style" value="Rústico / Biofílico" class="peer hidden">
+                                <div class="p-4 border border-rosegold-accent/30 rounded-xl text-center text-sm font-medium hover:border-rosegold peer-checked:bg-rosegold peer-checked:text-white transition-all">
+                                    Rústico
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Metragem Aproximada -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-rosegold-deep tracking-wider mb-3">3. Metragem aproximada do espaço:</label>
+                        <select id="size" class="w-full bg-rosegold-light border border-rosegold-accent/30 rounded-xl p-3 text-sm focus:outline-none focus:border-rosegold text-gray-700">
+                            <option value="Até 15 m² (Espaço Pequeno)">Até 15 m² (Espaço Pequeno)</option>
+                            <option value="Entre 15 e 40 m² (Espaço Médio)">Entre 15 e 40 m² (Espaço Médio)</option>
+                            <option value="Acima de 40 m² (Espaço Grande)">Acima de 40 m² (Espaço Grande)</option>
+                        </select>
+                    </div>
+
+                    <!-- Client Info -->
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-rosegold-deep tracking-wider mb-2">Seu Nome:</label>
+                            <input type="text" id="clientName" required class="w-full bg-rosegold-light border border-rosegold-accent/30 rounded-xl p-3 text-sm focus:outline-none focus:border-rosegold text-gray-700" placeholder="Digite seu nome">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-rosegold-deep tracking-wider mb-2">Seu E-mail (Opcional):</label>
+                            <input type="email" id="clientEmail" class="w-full bg-rosegold-light border border-rosegold-accent/30 rounded-xl p-3 text-sm focus:outline-none focus:border-rosegold text-gray-700" placeholder="exemplo@email.com">
+                        </div>
+                    </div>
+
+                    <!-- Action -->
+                    <div class="text-center pt-4">
+                        <button type="submit" class="w-full sm:w-auto px-10 py-4 bg-rosegold hover:bg-rosegold-dark text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all duration-300 transform hover:-translate-y-0.5 shadow-md shadow-rosegold/20">
+                            Enviar Briefing por WhatsApp
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            
+            <!-- Contact Info -->
+            <div class="space-y-6">
+                <span class="text-xs font-bold text-rosegold tracking-widest uppercase">Entre em Contato</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-rosegold-deep font-bold">Inicie sua transformação hoje</h2>
+                <p class="text-gray-600">
+                    Se você tem interesse em fazer uma reforma completa, readequação de layout ou necessita de uma consultoria de decoração, mande sua mensagem. Responderemos com carinho o mais breve possível.
+                </p>
+
+                <!-- Contact details -->
+                <div class="space-y-4 pt-4">
+                    <a href="https://api.whatsapp.com/send?phone=5511980353252" target="_blank" class="flex items-center space-x-3 text-gray-600 hover:text-rosegold transition-colors">
+                        <div class="w-10 h-10 rounded-full bg-rosegold-accent/20 flex items-center justify-center text-rosegold">📞</div>
+                        <div>
+                            <p class="text-[10px] uppercase text-gray-400 font-bold tracking-wider">WhatsApp</p>
+                            <p class="text-sm font-semibold text-rosegold-deep">(11) 98035-3252</p>
+                        </div>
+                    </a>
+                    <div class="flex items-center space-x-3 text-gray-600">
+                        <div class="w-10 h-10 rounded-full bg-rosegold-accent/20 flex items-center justify-center text-rosegold">📍</div>
+                        <div>
+                            <p class="text-[10px] uppercase text-gray-400 font-bold tracking-wider">Atendimento</p>
+                            <p class="text-sm font-semibold text-rosegold-deep">Online para todo o Brasil & Presencial</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 text-gray-600">
+                        <div class="w-10 h-10 rounded-full bg-rosegold-accent/20 flex items-center justify-center text-rosegold">📂</div>
+                        <div>
+                            <p class="text-[10px] uppercase text-gray-400 font-bold tracking-wider">CNPJ</p>
+                            <p class="text-sm font-semibold text-rosegold-deep">14.798.668/0001-30</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Form visual (sends message directly to WhatsApp as a text option or simulated success modal) -->
+            <div class="bg-rosegold-light/50 border border-rosegold-accent/30 rounded-3xl p-8 shadow-lg">
+                <h3 class="font-serif text-xl font-semibold text-rosegold-deep mb-6">Mande uma mensagem direta</h3>
+                <form onsubmit="sendMessage(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-rosegold-deep mb-1.5">Nome</label>
+                        <input type="text" id="contactName" required class="w-full bg-white border border-rosegold-accent/30 rounded-xl p-3 text-sm focus:outline-none focus:border-rosegold text-gray-700" placeholder="Como podemos te chamar?">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-rosegold-deep mb-1.5">Mensagem</label>
+                        <textarea id="contactMessage" required rows="4" class="w-full bg-white border border-rosegold-accent/30 rounded-xl p-3 text-sm focus:outline-none focus:border-rosegold text-gray-700" placeholder="Escreva sobre o que você precisa..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-rosegold hover:bg-rosegold-dark text-white text-xs font-bold uppercase tracking-widest rounded-xl transition-all duration-300">
+                        Enviar via WhatsApp
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-rosegold-deep text-white/80 py-12 border-t border-rosegold-accent/10">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8 items-center text-center md:text-left">
+            <div>
+                <span class="font-serif text-2xl font-bold tracking-widest text-rosegold-accent">SM</span>
+                <p class="text-xs uppercase tracking-widest text-rosegold-accent/60 -mt-1">Design de Interiores</p>
+                <p class="text-xs text-white/50 mt-4 leading-relaxed">
+                    Unindo a beleza natural das formas com a necessidade humana de habitar com dignidade e luxo.
+                </p>
+            </div>
+            
+            <div class="text-center">
+                <p class="text-xs uppercase text-rosegold-accent tracking-widest font-bold">Contato Direto</p>
+                <a href="tel:5511980353252" class="text-base text-white font-medium hover:text-rosegold transition-colors block mt-2">(11) 98035-3252</a>
+                <p class="text-xs text-white/40 mt-1">Atendimento de Segunda a Sexta</p>
+            </div>
+
+            <div class="md:text-right text-xs text-white/50 space-y-2">
+                <p><strong>SM DESIGN DE INTERIORES</strong></p>
+                <p>CNPJ: 14.798.668/0001-30</p>
+                <p>© 2026 Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Logic -->
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            } else {
+                menu.classList.add('hidden');
+                icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            }
+        }
+
+        function sendBriefing(event) {
+            event.preventDefault();
+            const room = document.querySelector('input[name="room"]:checked').value;
+            const style = document.querySelector('input[name="style"]:checked').value;
+            const size = document.getElementById('size').value;
+            const name = document.getElementById('clientName').value;
+            const email = document.getElementById('clientEmail').value;
+
+            let text = `Olá, SM Design de Interiores! Me chamo ${name}.%0A%0A`;
+            text += `Acabei de simular meu briefing no site:%0A`;
+            text += `🏡 *Ambiente:* ${room}%0A`;
+            text += `🎨 *Estilo Desejado:* ${style}%0A`;
+            text += `📏 *Metragem:* ${size}%0A`;
+            if (email) {
+                text += `📧 *E-mail:* ${email}%0A`;
+            }
+            text += `%0AGostaria de entender melhor como funciona a assessoria.`;
+
+            const waLink = `https://api.whatsapp.com/send?phone=5511980353252&text=${text}`;
+            window.open(waLink, '_blank');
+        }
+
+        function sendMessage(event) {
+            event.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const message = document.getElementById('contactMessage').value;
+
+            let text = `Olá! Me chamo ${name}.%0A%0A`;
+            text += `*Mensagem:* ${message}`;
+
+            const waLink = `https://api.whatsapp.com/send?phone=5511980353252&text=${text}`;
+            window.open(waLink, '_blank');
+        }
+    </script>
+</body>
+</html>
+
+```
